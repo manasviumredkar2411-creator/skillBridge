@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillBridge | Internship Journey</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+}
+
+nav{
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #444;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#ddd;
+}
+
+.nav-links{
+    display:flex;
+    gap:22px;
+}
+
+.nav-links a{
+    color:#bbb;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.login-btn{
+    border:1px solid #aaa;
+    padding:8px 16px;
+    border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">SkillBridge</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="internship.html">Internships</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#about">About</a>
+        <a href="login.html" class="login-btn">Login</a>
+    </div>
+</nav>
+<style>
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 0 60px;
+}
+
+.back{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.hero{
+    margin-top:25px;
+    padding:30px;
+    text-align:center;
+    border:1px solid #444;
+    border-radius:22px;
+    background:#111;
+}
+
+.hero-icon{
+    font-size:50px;
+}
+
+.hero h1{
+    margin:12px 0 6px;
+}
+
+.company{
+    color:#aaa;
+    margin-bottom:15px;
+}
+
+.status{
+    display:inline-block;
+    padding:7px 16px;
+    border:1px solid #999;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.section-title{
+    text-align:center;
+    margin:40px 0 20px;
+}
+
+.journey{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+}
+
+.step{
+    padding:18px 8px;
+    text-align:center;
+    border:1px solid #444;
+    border-radius:15px;
+    background:#111;
+}
+
+.step-icon{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.step h3{
+    font-size:13px;
+}
+
+.step p{
+    color:#888;
+    font-size:11px;
+    margin-top:5px;
+}
+
+button{
+    padding:10px 18px;
+    border:0;
+    border-radius:20px;
+    cursor:pointer;
+    background:#ddd;
+    color:#000;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#fff;
+}
+
+.hidden{
+    display:none;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    border-top:1px solid #333;
+    color:#777;
+}
+
+@media(max-width:700px){
+    .nav-links{
+        gap:8px;
+    }
+
+    .journey{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+</style>
+
+<div class="container">
+
+<a href="internship-details.html?internship=frontend" class="back">
+← Back to Internship Details
+</a>
+
+<div class="hero">
+
+    <div class="hero-icon" id="heroIcon">💻</div>
+
+    <h1 id="internshipTitle">Frontend Developer</h1>
+
+    <div class="company" id="companyName">
+        ABC Technologies
+    </div>
+
+    <div class="status" id="status">
+        Applied
+    </div>
+
+</div>
+    <div class="step">
+        <div class="step-icon">🔍</div>
+        <h3>Selection</h3>
+        <p>Application Review</p>
+    </div>
+
+    <div class="step">
+        <div class="step-icon">🚀</div>
+        <h3>Start</h3>
+        <p>Begin Internship</p>
+    </div>
+
+    <div class="step">
+        <div class="step-icon">📚</div>
+        <h3>Learning</h3>
+        <p>Complete Modules</p>
+    </div>
+
+    <div class="step">
+        <div class="step-icon">📝</div>
+        <h3>Assessment</h3>
+        <p>Complete Tests</p>
+    </div>
+
+    <div class="step">
+        <div class="step-icon">🏆</div>
+        <h3>Certificate</h3>
+        <p>Complete Internship</p>
+    </div>
+
+</div>
+
+<div class="demo-box">
+
+    <h3>Application Status</h3>
+
+    <p>Demo controls for project presentation</p>
+
+    <button onclick="setStatus('Under Review')">
+        Under Review
+    </button>
+
+    <button onclick="setStatus('Shortlisted')">
+        Shortlisted
+    </button>
+
+    <button onclick="setStatus('Selected')">
+        Selected
+    </button>
+
+</div>
+
+<div class="start-box hidden" id="startBox">
+
+    <h2>Ready to Start?</h2>
+
+    <br>
+
+    <button onclick="startInternship()">
+        Start Internship
+    </button>
+
+</div>
+<div class="learning hidden" id="learning">
+
+<h2 class="section-title">Learning Modules</h2>
+
+<div class="modules">
+
+<div class="module">
+<h3>Module 1 — HTML & CSS</h3>
+<p>Learn webpage structure, HTML elements, CSS styling and responsive design.</p>
+<button onclick="completeModule(0)">Complete Module</button>
+</div>
+
+<div class="module">
+<h3>Module 2 — JavaScript Basics</h3>
+<p>Learn variables, functions, conditions, events and basic JavaScript.</p>
+<button onclick="completeModule(1)">Complete Module</button>
+</div>
+
+<div class="module">
+<h3>Module 3 — DOM & Events</h3>
+<p>Learn how JavaScript interacts with webpage elements and user events.</p>
+<button onclick="completeModule(2)">Complete Module</button>
+</div>
+
+<div class="module">
+<h3>Module 4 — Responsive Web Design</h3>
+<p>Learn how to create webpages for different screen sizes.</p>
+<button onclick="completeModule(3)">Complete Module</button>
+</div>
+
+</div>
+
+
+<div class="progress-box">
+
+<div class="progress-text">
+<span>Internship Progress</span>
+<span id="progressText">0%</span>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+
+</div>
+
+
+<div class="quiz-box hidden" id="quiz">
+
+<h2>Module Quiz</h2>
+
+<div id="quizContent"></div>
+
+<button onclick="submitQuiz()">Submit Quiz</button>
+
+<p id="quizResult"></p>
+
+</div>
+
+
+<div class="assessment-box hidden" id="assessment">
+
+<h2>Final Assessment</h2>
+
+<p>
+You have completed all learning modules and passed the module quiz.
+</p>
+
+<br>
+
+<button onclick="completeAssessment()">
+Complete Final Assessment
+</button>
+
+</div>
+
+
+<div class="certificate-box hidden" id="certificate">
+
+<div class="certificate" style="
+max-width:850px;
+margin:30px auto;
+padding:10px;
+background:linear-gradient(135deg,#777,#eee,#999,#fff,#777);
+border-radius:10px;
+box-shadow:0 0 30px rgba(255,255,255,.25);
+">
+
+<div style="
+background:#111;
+border:2px solid #ddd;
+outline:1px solid #777;
+outline-offset:-8px;
+padding:45px 30px;
+text-align:center;
+border-radius:6px;
+">
+
+<div style="
+font-size:24px;
+font-weight:bold;
+letter-spacing:3px;
+color:#ddd;
+">
+SKILLBRIDGE
+</div>
+
+<div style="
+width:120px;
+height:2px;
+background:#aaa;
+margin:12px auto 25px;
+"></div>
+
+<p style="
+color:#aaa;
+letter-spacing:2px;
+font-size:13px;
+">
+CERTIFICATE OF COMPLETION
+</p>
+
+<h2 style="
+font-family:Georgia,serif;
+font-size:36px;
+color:white;
+margin:12px 0 25px;
+">
+Certificate of Completion
+</h2>
+
+<p>This certificate is proudly awarded to</p>
+
+<h3 id="studentName" style="
+font-size:28px;
+color:#eee;
+margin:15px 0;
+text-transform:capitalize;
+">
+Student
+</h3>
+
+<p>for successfully completing the</p>
+
+<h3 style="
+font-size:22px;
+color:#ddd;
+margin:15px 0 8px;
+">
+Frontend Developer Internship
+</h3>
+
+<p style="color:#aaa;">
+ABC Technologies
+</p>
+
+<div style="
+width:70px;
+height:70px;
+border:2px solid #bbb;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:25px auto;
+font-size:30px;
+color:#ddd;
+">
+✓
+</div>
+
+<p style="color:#aaa;font-size:13px;">
+This certificate recognizes the successful completion
+of the internship learning journey.
+</p>
+
+<div style="
+display:flex;
+justify-content:space-between;
+margin-top:35px;
+color:#aaa;
+font-size:12px;
+">
+
+<div style="width:150px;">
+<div style="border-top:1px solid #777;padding-top:7px;">
+SkillBridge
+</div>
+Issued By
+</div>
+
+<div style="width:150px;">
+<div style="border-top:1px solid #777;padding-top:7px;">
+2026
+</div>
+Year
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 SkillBridge | Student Skill & Internship Portal
+</footer>
+
+</body>
+</html>
+
+<script>
+
+let state = JSON.parse(
+    localStorage.getItem("skillBridgeFrontendJourney")
+) || {
+    status:"Applied",
+    started:false,
+    completedModules:[],
+    quizPassed:false,
+    assessmentCompleted:false,
+    completed:false
+};
+
+
+/* STATUS */
+
+function setStatus(status){
+
+    state.status = status;
+
+    saveState();
+
+    document.getElementById("status").innerText = status;
+
+    if(status === "Selected"){
+        document.getElementById("startBox")
+        .classList.remove("hidden");
+    }
+}
+
+
+/* START INTERNSHIP */
+
+function startInternship(){
+
+    state.started = true;
+
+    saveState();
+
+    document.getElementById("startBox")
+    .classList.add("hidden");
+
+    document.getElementById("learning")
+    .classList.remove("hidden");
+
+    updateProgress();
+}
+
+
+/* COMPLETE MODULE */
+
+function completeModule(index){
+
+    if(!state.completedModules.includes(index)){
+
+        state.completedModules.push(index);
+
+        saveState();
+
+        updateProgress();
+    }
+
+    if(state.completedModules.length === 4){
+
+        document.getElementById("quiz")
+        .classList.remove("hidden");
+
+        loadQuiz();
+    }
+}
+
+
+/* PROGRESS */
+
+function updateProgress(){
+
+    let progress =
+        state.completedModules.length * 20;
+
+    if(state.quizPassed){
+        progress = 85;
+    }
+
+    if(state.completed){
+        progress = 100;
+    }
+
+    document.getElementById("progressFill")
+    .style.width = progress + "%";
+
+    document.getElementById("progressText")
+    .innerText = progress + "%";
+}
+
+
+/* QUIZ */
+
+const questions = [
+
+{
+    question:"Which language is mainly used to structure a webpage?",
+    options:["HTML","CSS","JavaScript","Python"],
+    answer:"HTML"
+},
+
+{
+    question:"Which language is mainly used to add interactivity to a webpage?",
+    options:["HTML","CSS","JavaScript","SQL"],
+    answer:"JavaScript"
+},
+
+{
+    question:"Which CSS concept is commonly used to create layouts?",
+    options:["Flexbox","Python","SQL","PHP"],
+    answer:"Flexbox"
+}
+
+];
+
+
+function loadQuiz(){
+
+    let html = "";
+
+    questions.forEach((q,index)=>{
+
+        html += `
+        <div class="quiz-question">
+
+        <p>${index+1}. ${q.question}</p>
+
+        ${q.options.map(option => `
+        
+        <label class="quiz-option">
+        
+        <input type="radio"
+        name="q${index}"
+        value="${option}">
+        
+        ${option}
+        
+        </label>
+
+        `).join("")}
+
+        </div>
+        `;
+
+    });
+
+    document.getElementById("quizContent")
+    .innerHTML = html;
+}
+
+
+/* SUBMIT QUIZ */
+
+function submitQuiz(){
+
+    let score = 0;
+
+    questions.forEach((q,index)=>{
+
+        let selected =
+            document.querySelector(
+                `input[name="q${index}"]:checked`
+            );
+
+        if(selected &&
+           selected.value === q.answer){
+
+            score++;
+        }
+
+    });
+
+
+    let result =
+        document.getElementById("quizResult");
+
+
+    if(score === questions.length){
+
+        state.quizPassed = true;
+
+        saveState();
+
+        result.innerText =
+            "Quiz Passed!";
+
+        document.getElementById("assessment")
+        .classList.remove("hidden");
+
+        updateProgress();
+
+    }else{
+
+        result.innerText =
+            "Please try again. Score: " +
+            score + "/" + questions.length;
+    }
+
+}
+
+
+/* FINAL ASSESSMENT */
+
+function completeAssessment(){
+
+    state.assessmentCompleted = true;
+    state.completed = true;
+    state.status = "Completed";
+
+    saveState();
+
+    document.getElementById("status")
+    .innerText = "Completed";
+
+    document.getElementById("certificate")
+    .classList.remove("hidden");
+
+    updateProgress();
+
+    let profile =
+        JSON.parse(
+            localStorage.getItem("skillBridgeProfile")
+        );
+
+    if(profile && profile.name){
+
+        document.getElementById("studentName")
+        .innerText = profile.name;
+
+    }
+
+}
+
+
+/* SAVE */
+
+function saveState(){
+
+    localStorage.setItem(
+        "skillBridgeFrontendJourney",
+        JSON.stringify(state)
+    );
+
+}
+
+
+/* LOAD SAVED STATE */
+
+document.getElementById("status")
+.innerText = state.status;
+
+
+if(state.status === "Selected"){
+
+    document.getElementById("startBox")
+    .classList.remove("hidden");
+
+}
+
+
+if(state.started){
+
+    document.getElementById("learning")
+    .classList.remove("hidden");
+
+}
+
+
+if(state.completedModules.length === 4){
+
+    document.getElementById("quiz")
+    .classList.remove("hidden");
+
+    loadQuiz();
+
+}
+
+
+if(state.quizPassed){
+
+    document.getElementById("assessment")
+    .classList.remove("hidden");
+
+}
+
+
+if(state.completed){
+
+    document.getElementById("certificate")
+    .classList.remove("hidden");
+
+}
+
+
+updateProgress();
+
+
+/* CLICK RIPPLE */
+
+document.addEventListener("click",function(e){
+
+    let ripple =
+        document.createElement("span");
+
+    ripple.className = "ripple";
+
+    ripple.style.left =
+        e.clientX + "px";
+
+    ripple.style.top =
+        e.clientY + "px";
+
+    document.body.appendChild(ripple);
+
+    setTimeout(()=>{
+        ripple.remove();
+    },600);
+
+});
+
+</script>

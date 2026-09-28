@@ -1,0 +1,583 @@
+<Shtml>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillBridge | Profile</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            color: #f1f1f1;
+            background:
+                radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(180,190,200,0.08), transparent 30%),
+                #050505;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #292929;
+            background: rgba(0,0,0,0.85);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e0e3e6;
+        }
+
+        .home-btn {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            color: white;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 45px auto;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #888;
+        }
+
+        /* FORM CARD */
+
+        .form-card {
+            background: linear-gradient(145deg, #111, #080808);
+            border: 1px solid #292929;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cfcfcf;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            outline: none;
+            background: #0d0d0d;
+            color: #eee;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #aaa;
+            box-shadow: 0 0 10px rgba(220,220,220,0.08);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        option {
+            background: #111;
+            color: white;
+        }
+
+        /* BUTTON */
+
+        .save-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 25px;
+            background: #dfe3e7;
+            color: #050505;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 5px;
+        }
+
+        .save-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* MESSAGE */
+
+        #message {
+            text-align: center;
+            margin-top: 18px;
+            min-height: 20px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 92%;
+                margin: 30px auto;
+            }
+
+            .form-card {
+                padding: 25px 20px;
+            }
+
+            .heading h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            SkillBridge
+        </div>
+
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+        <div class="heading">
+
+            <h1 id="pageTitle">
+                Create Your Profile
+            </h1>
+
+            <p id="pageSubtitle">
+                Tell us about yourself and your career interests.
+            </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your mobile number"
+                >
+
+            </div>
+
+
+            <!-- COURSE -->
+
+            <div class="form-group">
+
+                <label for="course">
+                    Course
+                </label>
+
+                <select id="course">
+
+                    <option value="">
+                        Select Course
+                    </option>
+
+                    <option value="BCA">
+                        BCA
+                    </option>
+
+                    <option value="BSc CS">
+                        BSc Computer Science
+                    </option>
+
+                    <option value="B.Tech">
+                        B.Tech
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- YEAR -->
+
+            <div class="form-group">
+
+                <label for="year">
+                    Year
+                </label>
+
+                <select id="year">
+
+                    <option value="">
+                        Select Year
+                    </option>
+
+                    <option value="1st Year">
+                        1st Year
+                    </option>
+
+                    <option value="2nd Year">
+                        2nd Year
+                    </option>
+
+                    <option value="3rd Year">
+                        3rd Year
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SKILLS -->
+
+            <div class="form-group">
+
+                <label for="skills">
+                    Skills
+                </label>
+
+                <input
+                    type="text"
+                    id="skills"
+                    placeholder="Example: HTML, CSS, JavaScript, Excel"
+                >
+
+            </div>
+
+
+            <!-- INTEREST -->
+
+            <div class="form-group">
+
+                <label for="interest">
+                    Career Interest
+                </label>
+
+                <select id="interest">
+
+                    <option value="">
+                        Select Career Interest
+                    </option>
+
+                    <option value="Web Development">
+                        Web Development
+                    </option>
+
+                    <option value="Data Analytics">
+                        Data Analytics
+                    </option>
+
+                    <option value="UI/UX Design">
+                        UI/UX Design
+                    </option>
+
+                    <option value="Software Development">
+                        Software Development
+                    </option>
+
+                    <option value="Cyber Security">
+                        Cyber Security
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ABOUT -->
+
+            <div class="form-group">
+
+                <label for="about">
+                    Tell Me About Yourself
+                </label>
+
+                <textarea
+                    id="about"
+                    placeholder="Write a short introduction about yourself..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+                class="save-btn"
+                id="saveButton"
+                onclick="saveProfile()"
+            >
+                Create Profile
+            </button>
+
+
+            <div id="message"></div>
+
+        </div>
+
+    </div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /*
+        Check whether a profile already exists.
+        If yes → Edit Mode
+        If no  → Create Mode
+    */
+
+    let profile = null;
+
+    try {
+
+        profile = JSON.parse(
+            localStorage.getItem("skillBridgeProfile") || "null"
+        );
+
+    } catch (error) {
+
+        profile = null;
+
+    }
+
+
+    if (profile) {
+
+        // EDIT MODE
+
+        document.getElementById("pageTitle").textContent =
+            "Edit Your Profile";
+
+        document.getElementById("pageSubtitle").textContent =
+            "Update your profile information and keep your details up to date.";
+
+        document.getElementById("saveButton").textContent =
+            "Save Changes";
+
+
+        // Fill saved data
+
+        document.getElementById("name").value =
+            profile.name || "";
+
+        document.getElementById("email").value =
+            profile.email || "";
+
+        document.getElementById("phone").value =
+            profile.phone || "";
+
+        document.getElementById("course").value =
+            profile.course || "";
+
+        document.getElementById("year").value =
+            profile.year || "";
+
+        document.getElementById("skills").value =
+            profile.skills || "";
+
+        document.getElementById("interest").value =
+            profile.interest || "";
+
+        document.getElementById("about").value =
+            profile.about || "";
+
+    }
+
+});
+
+
+function saveProfile() {
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const course =
+        document.getElementById("course").value;
+
+    const year =
+        document.getElementById("year").value;
+
+    const skills =
+        document.getElementById("skills").value.trim();
+
+    const interest =
+        document.getElementById("interest").value;
+
+    const about =
+        document.getElementById("about").value.trim();
+
+
+    // Basic validation
+
+    if (
+        !name ||
+        !email ||
+        !phone ||
+        !course ||
+        !year ||
+        !skills ||
+        !interest ||
+        !about
+    ) {
+
+        document.getElementById("message").textContent =
+            "Please fill all the fields.";
+
+        return;
+    }
+
+
+    // Create profile object
+
+    const profile = {
+
+        name: name,
+        email: email,
+        phone: phone,
+        course: course,
+        year: year,
+        skills: skills,
+        interest: interest,
+        about: about
+
+    };
+
+
+    // Save / Update profile
+
+    localStorage.setItem(
+        "skillBridgeProfile",
+        JSON.stringify(profile)
+    );
+
+
+    document.getElementById("message").textContent =
+        "✅ Profile saved successfully!";
+
+
+    /*
+        After saving:
+        Go to Dashboard
+    */
+
+    setTimeout(function () {
+
+        window.location.href = "dashboard.html";
+
+    }, 800);
+
+}
+
+</script>
+
+</body>
+</html>

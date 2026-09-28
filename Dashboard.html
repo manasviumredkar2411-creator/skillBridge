@@ -1,0 +1,781 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge | Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(180,190,200,0.08), transparent 30%),
+                #050505;
+            color: #f1f1f1;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        nav {
+            height: 70px;
+            padding: 0 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #292929;
+            background: rgba(0,0,0,0.85);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dfe3e7;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .logout-btn {
+            padding: 9px 18px;
+            border: 1px solid #cfd3d6;
+            border-radius: 20px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background: #dfe3e7;
+            color: black;
+        }
+
+        /* MAIN */
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .welcome {
+            margin-bottom: 30px;
+        }
+
+        .welcome h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .welcome span {
+            color: #d8dce0;
+        }
+
+        .welcome p {
+            color: #999;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #111, #080808);
+            border: 1px solid #292929;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #e5e7e9;
+        }
+
+        /* PROFILE */
+        .profile-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 11px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .profile-row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #888;
+        }
+
+        .value {
+            color: #eee;
+            text-align: right;
+            max-width: 60%;
+        }
+
+        /* SKILLS */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            padding: 8px 14px;
+            border-radius: 20px;
+            background: #181818;
+            border: 1px solid #777;
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        /* INTERNSHIPS */
+        .internship-card {
+            border: 1px solid #292929;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .internship-card:hover {
+            border-color: #aaa;
+            transform: translateY(-3px);
+        }
+
+        .internship-card h3 {
+            margin-bottom: 6px;
+            color: #eee;
+        }
+
+        .company {
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 14px;
+        }
+
+        .tag {
+            font-size: 12px;
+            color: #bbb;
+            background: #151515;
+            padding: 5px 9px;
+            border-radius: 12px;
+        }
+
+        .apply-btn {
+            border: none;
+            padding: 9px 18px;
+            border-radius: 20px;
+            background: #dfe3e7;
+            color: #050505;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .apply-btn:hover {
+            background: white;
+        }
+
+        /* STATUS */
+        .empty {
+            color: #777;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .status-box {
+            border: 1px solid #292929;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 5px 12px;
+            border-radius: 15px;
+            background: #202020;
+            color: #ddd;
+            font-size: 13px;
+        }
+
+        /* PROGRESS */
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #777, #eee);
+            border-radius: 10px;
+            transition: 0.5s;
+        }
+
+        /* CERTIFICATE */
+        .certificate {
+            text-align: center;
+            padding: 25px;
+            border: 1px dashed #555;
+            border-radius: 14px;
+        }
+
+        .certificate-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .certificate p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links a {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .welcome h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">SkillBridge</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+</nav>
+
+
+<div class="container">
+
+    <!-- WELCOME -->
+    <div class="welcome">
+        <h1>Welcome, <span id="studentName">Student</span> 👋</h1>
+        <p>Your internship journey starts here.</p>
+    </div>
+
+
+    <!-- PROFILE + SKILLS -->
+    <div class="grid">
+
+        <div class="card">
+            <h2>👤 My Profile</h2>
+
+            <div class="profile-row">
+                <span class="label">Name</span>
+                <span class="value" id="profileName">-</span>
+            </div>
+
+            <div class="profile-row">
+                <span class="label">Email</span>
+                <span class="value" id="profileEmail">-</span>
+            </div>
+
+            <div class="profile-row">
+                <span class="label">Phone</span>
+                <span class="value" id="profilePhone">-</span>
+            </div>
+
+            <div class="profile-row">
+                <span class="label">Course</span>
+                <span class="value" id="profileCourse">-</span>
+            </div>
+
+            <div class="profile-row">
+                <span class="label">Year</span>
+                <span class="value" id="profileYear">-</span>
+            </div>
+
+            <div class="profile-row">
+                <span class="label">Career Interest</span>
+                <span class="value" id="profileInterest">-</span>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h2>💡 My Skills</h2>
+
+            <div class="skills" id="skillsContainer">
+                <span class="skill">No skills added</span>
+            </div>
+
+            <br>
+
+            <p style="color:#888; line-height:1.6;" id="aboutText">
+                No profile description added.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- RECOMMENDED INTERNSHIPS -->
+    <div class="card" style="margin-bottom:25px;">
+        <h2>🎯 Recommended Internships</h2>
+
+        <div class="internship-card">
+            <h3>Frontend Developer</h3>
+            <div class="company">ABC Technologies</div>
+
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+            </div>
+
+            <button class="apply-btn" onclick="applyInternship('frontend')">
+                Apply Now
+            </button>
+        </div>
+
+
+        <div class="internship-card">
+            <h3>Data Analyst</h3>
+            <div class="company">DataWorks</div>
+
+            <div class="tags">
+                <span class="tag">Excel</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Python</span>
+            </div>
+
+            <button class="apply-btn" onclick="applyInternship('data')">
+                Apply Now
+            </button>
+        </div>
+
+
+        <div class="internship-card">
+            <h3>UI/UX Designer</h3>
+            <div class="company">Creative Studio</div>
+
+            <div class="tags">
+                <span class="tag">Figma</span>
+                <span class="tag">UI Design</span>
+                <span class="tag">UX</span>
+            </div>
+
+            <button class="apply-btn" onclick="applyInternship('uiux')">
+                Apply Now
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- APPLICATIONS + PROGRESS -->
+    <div class="grid">
+
+        <div class="card">
+            <h2>📋 My Applications</h2>
+
+            <div id="applicationsContainer">
+                <div class="empty">
+                    No applications yet.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h2>📈 Internship Progress</h2>
+
+            <div id="progressContainer">
+                <div class="empty">
+                    No active internship yet.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- CERTIFICATE -->
+    <div class="card">
+        <h2>🏆 Certificate</h2>
+
+        <div class="certificate">
+            <div class="certificate-icon">🔒</div>
+
+            <h3>Certificate Locked</h3>
+
+            <p>
+                Complete your internship to unlock your
+                SkillBridge-generated completion certificate.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Get saved profile
+    let profile = null;
+
+    try {
+        profile = JSON.parse(
+            localStorage.getItem("skillBridgeProfile") || "null"
+        );
+    } catch (error) {
+        profile = null;
+    }
+
+
+    // PROFILE DATA
+    if (profile) {
+
+        document.getElementById("studentName").textContent =
+            profile.name || "Student";
+
+        document.getElementById("profileName").textContent =
+            profile.name || "-";
+
+        document.getElementById("profileEmail").textContent =
+            profile.email || "-";
+
+        document.getElementById("profilePhone").textContent =
+            profile.phone || "-";
+
+        document.getElementById("profileCourse").textContent =
+            profile.course || "-";
+
+        document.getElementById("profileYear").textContent =
+            profile.year || "-";
+
+        document.getElementById("profileInterest").textContent =
+            profile.interest || "-";
+
+        document.getElementById("aboutText").textContent =
+            profile.about || "No profile description added.";
+
+
+        // SKILLS
+        const skillsContainer =
+            document.getElementById("skillsContainer");
+
+        skillsContainer.innerHTML = "";
+
+        if (profile.skills) {
+
+            let skillsArray = profile.skills
+                .split(",")
+                .map(skill => skill.trim())
+                .filter(skill => skill !== "");
+
+            if (skillsArray.length > 0) {
+
+                skillsArray.forEach(function(skill) {
+
+                    const span = document.createElement("span");
+
+                    span.className = "skill";
+                    span.textContent = skill;
+
+                    skillsContainer.appendChild(span);
+                });
+
+            } else {
+
+                skillsContainer.innerHTML =
+                    '<span class="skill">No skills added</span>';
+            }
+
+        } else {
+
+            skillsContainer.innerHTML =
+                '<span class="skill">No skills added</span>';
+        }
+
+    } else {
+
+        document.getElementById("studentName").textContent =
+            "Student";
+
+        document.getElementById("aboutText").textContent =
+            "Create your profile to start your SkillBridge journey.";
+    }
+
+
+    loadApplications();
+
+});
+
+
+// APPLY INTERNSHIP
+function applyInternship(type) {
+
+    let internships = {
+
+        frontend: {
+            id: "frontend",
+            title: "Frontend Developer",
+            company: "ABC Technologies"
+        },
+
+        data: {
+            id: "data",
+            title: "Data Analyst",
+            company: "DataWorks"
+        },
+
+        uiux: {
+            id: "uiux",
+            title: "UI/UX Designer",
+            company: "Creative Studio"
+        }
+
+    };
+
+
+    let internship = internships[type];
+
+    if (!internship) {
+        return;
+    }
+
+
+    let applications = [];
+
+    try {
+
+        applications = JSON.parse(
+            localStorage.getItem("skillBridgeApplications") || "[]"
+        );
+
+    } catch (error) {
+
+        applications = [];
+
+    }
+
+
+    // Prevent duplicate application
+    const alreadyApplied = applications.some(function(app) {
+        return app.id === internship.id;
+    });
+
+
+    if (alreadyApplied) {
+
+        alert("You have already applied for this internship.");
+        return;
+    }
+
+
+    const newApplication = {
+
+        id: internship.id,
+        title: internship.title,
+        company: internship.company,
+        status: "Applied",
+        progress: 0,
+        appliedAt: new Date().toLocaleDateString()
+
+    };
+
+
+    applications.push(newApplication);
+
+
+    localStorage.setItem(
+        "skillBridgeApplications",
+        JSON.stringify(applications)
+    );
+
+
+    alert("Application submitted successfully!");
+
+
+    loadApplications();
+
+}
+
+
+// LOAD APPLICATIONS
+function loadApplications() {
+
+    let applications = [];
+
+    try {
+
+        applications = JSON.parse(
+            localStorage.getItem("skillBridgeApplications") || "[]"
+        );
+
+    } catch (error) {
+
+        applications = [];
+
+    }
+
+
+    const container =
+        document.getElementById("applicationsContainer");
+
+    const progressContainer =
+        document.getElementById("progressContainer");
+
+
+    container.innerHTML = "";
+    progressContainer.innerHTML = "";
+
+
+    if (applications.length === 0) {
+
+        container.innerHTML =
+            '<div class="empty">No applications yet.</div>';
+
+        progressContainer.innerHTML =
+            '<div class="empty">No active internship yet.</div>';
+
+        return;
+    }
+
+
+    // APPLICATIONS
+    applications.forEach(function(app) {
+
+        const box = document.createElement("div");
+
+        box.className = "status-box";
+
+        box.innerHTML = `
+            <strong>${app.title}</strong>
+            <div style="color:#888; margin-top:5px;">
+                ${app.company}
+            </div>
+            <span class="status">
+                ${app.status}
+            </span>
+        `;
+
+        container.appendChild(box);
+
+    });
+
+
+    // PROGRESS
+    const active = applications.find(function(app) {
+
+        return app.status === "Selected" ||
+               app.status === "Completed";
+
+    });
+
+
+    if (!active) {
+
+        progressContainer.innerHTML =
+            '<div class="empty">Your internship progress will appear after selection.</div>';
+
+        return;
+    }
+
+
+    const progress = Number(active.progress) || 0;
+
+
+    progressContainer.innerHTML = `
+
+        <div class="progress-text">
+            <span>${active.title}</span>
+            <span>${progress}%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"
+                 style="width:${progress}%;">
+            </div>
+        </div>
+
+        <p style="color:#777; margin-top:15px;">
+            Status: ${active.status}
+        </p>
+
+    `;
+
+}
+
+
+// LOGOUT
+function logout() {
+
+    localStorage.removeItem("skillBridgeLoggedIn");
+
+    window.location.href = "index.html";
+
+}
+
+</script>
+
+</body>
+</html>

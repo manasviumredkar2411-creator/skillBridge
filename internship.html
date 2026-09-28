@@ -1,0 +1,850 @@
+<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillBridge | Internships</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:
+        radial-gradient(circle at top right, rgba(220,225,230,0.12), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(180,185,190,0.08), transparent 30%),
+        #050505;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* NAVBAR */
+nav{
+    width:100%;
+    padding:22px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#e2e5e8;
+    letter-spacing:1px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#bbb;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#fff;
+}
+
+.login-btn{
+    padding:10px 22px;
+    border:1px solid #cfd3d7;
+    border-radius:25px;
+    color:#fff !important;
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    padding:65px 20px 35px;
+}
+
+.header h1{
+    font-size:42px;
+    margin-bottom:15px;
+    background:linear-gradient(90deg,#fff,#9da3a8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.header p{
+    color:#aaa;
+    font-size:17px;
+}
+
+/* SEARCH */
+.search-box{
+    width:85%;
+    max-width:850px;
+    margin:10px auto 50px;
+    display:flex;
+    gap:12px;
+}
+
+.search-box input{
+    flex:1;
+    padding:16px 20px;
+    border-radius:12px;
+    border:1px solid #444;
+    background:#111;
+    color:white;
+    outline:none;
+    font-size:15px;
+}
+
+.search-box input:focus{
+    border-color:#ccc;
+}
+
+.search-box button{
+    padding:0 28px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#f2f3f4,#9da2a6);
+    color:#050505;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* SECTION */
+.section{
+    width:86%;
+    max-width:1200px;
+    margin:0 auto 65px;
+}
+
+.section-title{
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.section-subtitle{
+    color:#888;
+    margin-bottom:25px;
+}
+
+/* RECOMMENDATION */
+.recommended{
+    border:1px solid #777;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:45px;
+    background:linear-gradient(145deg,#151515,#090909);
+    box-shadow:0 0 25px rgba(255,255,255,0.05);
+}
+
+.recommended-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.recommended h2{
+    margin-bottom:9px;
+}
+
+.recommended p{
+    color:#999;
+}
+
+.match{
+    min-width:105px;
+    text-align:center;
+    padding:12px;
+    border:1px solid #aaa;
+    border-radius:12px;
+}
+
+.match strong{
+    display:block;
+    font-size:22px;
+    color:#fff;
+}
+
+.match span{
+    color:#999;
+    font-size:12px;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:linear-gradient(145deg,#151515,#080808);
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:25px;
+    transition:0.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#aaa;
+    box-shadow:0 10px 30px rgba(255,255,255,0.08);
+}
+
+.card-icon{
+    width:55px;
+    height:55px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    margin-bottom:20px;
+    background:linear-gradient(135deg,#e5e7e9,#71767b);
+    color:#111;
+}
+
+.card h3{
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.company{
+    color:#aaa;
+    margin-bottom:18px;
+}
+
+.info{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.tag{
+    padding:6px 10px;
+    border-radius:20px;
+    background:#1d1d1d;
+    border:1px solid #393939;
+    color:#bbb;
+    font-size:12px;
+}
+
+.card-description{
+    color:#999;
+    font-size:14px;
+    line-height:1.6;
+    min-height:65px;
+}
+
+.card-bottom{
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.duration{
+    color:#aaa;
+    font-size:13px;
+}
+
+.view-btn{
+    text-decoration:none;
+    padding:10px 17px;
+    border-radius:9px;
+    background:#e1e3e5;
+    color:#080808;
+    font-size:13px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.view-btn:hover{
+    background:#fff;
+    transform:scale(1.04);
+}
+
+/* NO RESULT */
+.no-result{
+    display:none;
+    text-align:center;
+    color:#888;
+    padding:30px;
+    border:1px dashed #444;
+    border-radius:15px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+    border-top:1px solid #222;
+    margin-top:40px;
+}
+
+/* RIPPLE */
+.ripple{
+    position:fixed;
+    width:20px;
+    height:20px;
+    border:2px solid #dfe2e5;
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    animation:ripple 0.6s ease-out forwards;
+}
+
+@keyframes ripple{
+    0%{
+        width:10px;
+        height:10px;
+        opacity:1;
+    }
+    100%{
+        width:80px;
+        height:80px;
+        opacity:0;
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:850px){
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .nav-links{
+        gap:15px;
+    }
+}
+
+@media(max-width:600px){
+    nav{
+        padding:18px 5%;
+    }
+
+    .nav-links a:not(.login-btn){
+        display:none;
+    }
+
+    .header h1{
+        font-size:32px;
+    }
+
+    .search-box{
+        width:90%;
+        flex-direction:column;
+    }
+
+    .search-box button{
+        padding:14px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .recommended-top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .match{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">SkillBridge</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="internship.html" class="active">Internships</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#about">About</a>
+        <a href="login.html" class="login-btn">Login</a>
+    </div>
+</nav>
+
+
+<!-- HEADER -->
+<section class="header">
+    <h1>Explore Internships</h1>
+    <p>Find internships based on your course, skills and career interest.</p>
+</section>
+
+
+<!-- SEARCH -->
+<div class="search-box">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search internships, skills or companies..."
+    >
+    <button onclick="searchInternships()">Search</button>
+</div>
+
+
+<!-- RECOMMENDED -->
+<section class="section">
+
+    <h2 class="section-title">🎯 Recommended For You</h2>
+
+    <p class="section-subtitle">
+        Internships matched with your profile.
+    </p>
+
+    <div id="recommendedContainer"></div>
+
+</section>
+
+
+<!-- ALL INTERNSHIPS -->
+<section class="section">
+
+    <h2 class="section-title">💼 Popular Internships</h2>
+
+    <p class="section-subtitle">
+        Explore available internship opportunities.
+    </p>
+
+    <div class="cards" id="internshipCards">
+
+        <!-- FRONTEND -->
+        <div class="card internship-card"
+             data-search="frontend developer abc technologies html css javascript web development bca">
+
+            <div class="card-icon">💻</div>
+
+            <h3>Frontend Developer</h3>
+
+            <div class="company">ABC Technologies</div>
+
+            <div class="info">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+            </div>
+
+            <p class="card-description">
+                Learn frontend development and build responsive web interfaces.
+            </p>
+
+            <div class="card-bottom">
+                <span class="duration">⏱ 8 Weeks</span>
+
+                <a href="internship-details.html?internship=frontend"
+                   class="view-btn">
+                    View Internship
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- DATA ANALYST -->
+        <div class="card internship-card"
+             data-search="data analyst dataworks excel sql python data analytics bca bsc">
+
+            <div class="card-icon">📊</div>
+
+            <h3>Data Analyst</h3>
+
+            <div class="company">DataWorks</div>
+
+            <div class="info">
+                <span class="tag">Excel</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Python</span>
+            </div>
+
+            <p class="card-description">
+                Learn data analysis, data cleaning and basic business insights.
+            </p>
+
+            <div class="card-bottom">
+                <span class="duration">⏱ 8 Weeks</span>
+
+                <a href="internship-details.html?internship=data"
+                   class="view-btn">
+                    View Internship
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- UI UX -->
+        <div class="card internship-card"
+             data-search="ui ux designer creative studio figma ui design ux design bca btech">
+
+            <div class="card-icon">🎨</div>
+
+            <h3>UI/UX Designer</h3>
+
+            <div class="company">Creative Studio</div>
+
+            <div class="info">
+                <span class="tag">Figma</span>
+                <span class="tag">UI Design</span>
+                <span class="tag">UX</span>
+            </div>
+
+            <p class="card-description">
+                Learn user interface design, wireframes and user experience basics.
+            </p>
+
+            <div class="card-bottom">
+                <span class="duration">⏱ 6 Weeks</span>
+
+                <a href="internship-details.html?internship=uiux"
+                   class="view-btn">
+                    View Internship
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="no-result" id="noResult">
+        No internships found. Try another search.
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 SkillBridge | Student Skill & Internship Portal
+</footer>
+
+
+<script>
+
+/* ===============================
+   PROFILE BASED RECOMMENDATION
+================================ */
+
+const profile = JSON.parse(
+    localStorage.getItem("skillBridgeProfile")
+);
+
+const recommendedContainer =
+    document.getElementById("recommendedContainer");
+
+
+function getRecommendation(){
+
+    if(!profile){
+
+        recommendedContainer.innerHTML = `
+            <div class="recommended">
+                <div class="recommended-top">
+                    <div>
+                        <h2>Create your profile first</h2>
+                        <p>
+                            Add your course, skills and career interest
+                            to get personalized internship recommendations.
+                        </p>
+                    </div>
+
+                    <a href="profile.html" class="view-btn">
+                        Create Profile
+                    </a>
+                </div>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const course =
+        (profile.course || "").toLowerCase();
+
+    const skills =
+        (profile.skills || "").toLowerCase();
+
+    const interest =
+        (profile.interest || "").toLowerCase();
+
+
+    let frontendScore = 0;
+    let dataScore = 0;
+    let uiuxScore = 0;
+
+
+    /* COURSE MATCH */
+
+    if(
+        course.includes("bca") ||
+        course.includes("b.tech") ||
+        course.includes("bsc")
+    ){
+        frontendScore += 20;
+        dataScore += 15;
+        uiuxScore += 10;
+    }
+
+
+    /* SKILL MATCH */
+
+    if(
+        skills.includes("html") ||
+        skills.includes("css") ||
+        skills.includes("javascript") ||
+        skills.includes("web")
+    ){
+        frontendScore += 35;
+    }
+
+    if(
+        skills.includes("excel") ||
+        skills.includes("sql") ||
+        skills.includes("python") ||
+        skills.includes("data")
+    ){
+        dataScore += 35;
+    }
+
+    if(
+        skills.includes("figma") ||
+        skills.includes("ui") ||
+        skills.includes("ux") ||
+        skills.includes("design")
+    ){
+        uiuxScore += 35;
+    }
+
+
+    /* CAREER INTEREST MATCH */
+
+    if(
+        interest.includes("web") ||
+        interest.includes("software")
+    ){
+        frontendScore += 40;
+    }
+
+    if(
+        interest.includes("data")
+    ){
+        dataScore += 40;
+    }
+
+    if(
+        interest.includes("ui") ||
+        interest.includes("ux")
+    ){
+        uiuxScore += 40;
+    }
+
+
+    let best;
+    let score;
+
+
+    if(
+        frontendScore >= dataScore &&
+        frontendScore >= uiuxScore
+    ){
+        best = {
+            title:"Frontend Developer",
+            company:"ABC Technologies",
+            skills:"HTML • CSS • JavaScript",
+            description:
+            "Build responsive websites and learn modern frontend development.",
+            link:"internship-details.html?internship=frontend"
+        };
+
+        score = Math.min(frontendScore,99);
+    }
+
+    else if(dataScore >= uiuxScore){
+
+        best = {
+            title:"Data Analyst",
+            company:"DataWorks",
+            skills:"Excel • SQL • Python",
+            description:
+            "Learn data analysis, data cleaning and business insights.",
+            link:"internship-details.html?internship=data"
+        };
+
+        score = Math.min(dataScore,99);
+    }
+
+    else{
+
+        best = {
+            title:"UI/UX Designer",
+            company:"Creative Studio",
+            skills:"Figma • UI Design • UX",
+            description:
+            "Learn interface design and user experience fundamentals.",
+            link:"internship-details.html?internship=uiux"
+        };
+
+        score = Math.min(uiuxScore,99);
+    }
+
+
+    /* MINIMUM MATCH */
+
+    if(score < 50){
+        score = 68;
+    }
+
+
+    recommendedContainer.innerHTML = `
+
+        <div class="recommended">
+
+            <div class="recommended-top">
+
+                <div>
+
+                    <h2>${best.title}</h2>
+
+                    <p>
+                        ${best.company}
+                    </p>
+
+                    <div class="info" style="margin-top:15px;">
+                        <span class="tag">
+                            ${best.skills}
+                        </span>
+                    </div>
+
+                    <p style="margin-top:10px;">
+                        ${best.description}
+                    </p>
+
+                </div>
+
+
+                <div class="match">
+
+                    <strong>${score}%</strong>
+
+                    <span>Profile Match</span>
+
+                </div>
+
+            </div>
+
+
+            <div style="margin-top:22px;">
+
+                <a href="${best.link}" class="view-btn">
+                    View Internship
+                </a>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* ===============================
+   SEARCH
+================================ */
+
+function searchInternships(){
+
+    const input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const cards =
+        document.querySelectorAll(".internship-card");
+
+    let found = false;
+
+
+    cards.forEach(card => {
+
+        const text =
+            card.dataset.search.toLowerCase();
+
+        if(text.includes(input)){
+
+            card.style.display = "block";
+            found = true;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    document.getElementById("noResult").style.display =
+        found ? "none" : "block";
+}
+
+
+/* LIVE SEARCH */
+
+document
+.getElementById("searchInput")
+.addEventListener("input", searchInternships);
+
+
+/* ===============================
+   CLICK RIPPLE
+================================ */
+
+document.addEventListener("click",function(e){
+
+    const ripple =
+        document.createElement("div");
+
+    ripple.className = "ripple";
+
+    ripple.style.left =
+        e.clientX + "px";
+
+    ripple.style.top =
+        e.clientY + "px";
+
+    document.body.appendChild(ripple);
+
+    setTimeout(()=>{
+        ripple.remove();
+    },600);
+
+});
+
+
+/* LOAD RECOMMENDATION */
+
+getRecommendation();
+
+</script>
+
+</body>
+</html>

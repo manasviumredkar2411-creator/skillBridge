@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI/UX Designer Internship Journey | SkillBridge</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    min-height:100vh;
+}
+
+nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    border-bottom:1px solid #444;
+    background:#080808;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#ddd;
+}
+
+.logo span{
+    color:#fff;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#ccc;
+    text-decoration:none;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.container{
+    width:86%;
+    max-width:1100px;
+    margin:auto;
+}
+
+.back{
+    display:inline-block;
+    margin:30px 0 15px;
+    color:#bbb;
+    text-decoration:none;
+}
+
+.hero{
+    text-align:center;
+    padding:35px 20px;
+    border:1px solid #444;
+    border-radius:20px;
+    background:linear-gradient(145deg,#151515,#070707);
+}
+
+.hero-icon{
+    font-size:55px;
+}
+
+.hero h1{
+    margin:12px 0 8px;
+    font-size:34px;
+}
+
+.hero p{
+    color:#aaa;
+}
+
+.company{
+    color:#ddd;
+    margin-top:8px;
+}
+
+.status{
+    display:inline-block;
+    margin-top:18px;
+    padding:8px 18px;
+    border:1px solid #888;
+    border-radius:20px;
+    color:#ddd;
+}
+
+.section{
+    margin-top:35px;
+}
+
+.section h2{
+    margin-bottom:18px;
+    font-size:25px;
+}
+
+.journey{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.step{
+    padding:20px 12px;
+    text-align:center;
+    border:1px solid #444;
+    border-radius:15px;
+    background:#0d0d0d;
+    transition:.3s;
+}
+
+.step:hover{
+    transform:translateY(-4px);
+    border-color:#aaa;
+}
+
+.step .number{
+    width:35px;
+    height:35px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #aaa;
+    border-radius:50%;
+    margin-bottom:10px;
+}
+
+.step small{
+    color:#999;
+}
+
+.demo-box{
+    margin-top:25px;
+    padding:20px;
+    border:1px solid #444;
+    border-radius:15px;
+    background:#0b0b0b;
+}
+
+.demo-box p{
+    color:#aaa;
+    margin-bottom:15px;
+}
+
+.demo-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+button{
+    border:1px solid #888;
+    background:#111;
+    color:#ddd;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ddd;
+    color:#000;
+}
+
+.start-box{
+    margin-top:25px;
+    padding:25px;
+    border:1px solid #555;
+    border-radius:15px;
+    text-align:center;
+    display:none;
+}
+
+.start-box p{
+    color:#aaa;
+    margin:10px 0 18px;
+}
+
+.primary{
+    background:#ddd;
+    color:#000;
+    font-weight:bold;
+}
+
+.modules{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.module{
+    padding:22px;
+    border:1px solid #444;
+    border-radius:16px;
+    background:linear-gradient(145deg,#151515,#080808);
+}
+
+.module h3{
+    margin-bottom:8px;
+}
+
+.module p{
+    color:#999;
+    margin-bottom:15px;
+}
+
+.module button{
+    width:100%;
+}
+
+.module.completed{
+    border-color:#aaa;
+}
+
+.progress-box{
+    margin-top:25px;
+    padding:22px;
+    border:1px solid #444;
+    border-radius:15px;
+}
+
+.progress-bar{
+    width:100%;
+    height:14px;
+    background:#222;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#777,#fff);
+    transition:.5s;
+}
+
+.progress-text{
+    margin-top:10px;
+    color:#aaa;
+}
+
+.quiz{
+    margin-top:25px;
+    padding:25px;
+    border:1px solid #444;
+    border-radius:16px;
+    background:#0d0d0d;
+}
+
+.question{
+    margin-bottom:25px;
+}
+
+.question h3{
+    margin-bottom:12px;
+}
+
+.option{
+    display:block;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #444;
+    border-radius:8px;
+    cursor:pointer;
+    color:#ccc;
+}
+
+.option:hover{
+    border-color:#aaa;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+#quizResult{
+    margin-top:15px;
+    color:#ccc;
+}
+
+.assessment{
+    margin-top:25px;
+    padding:25px;
+    border:1px solid #444;
+    border-radius:16px;
+    text-align:center;
+}
+
+.assessment p{
+    color:#aaa;
+    margin:10px 0 18px;
+}
+
+.certificate-box{
+    margin-top:30px;
+}
+
+.certificate{
+    padding:45px 30px;
+    text-align:center;
+    border:3px solid #aaa;
+    border-radius:18px;
+    background:linear-gradient(145deg,#111,#050505);
+    box-shadow:0 0 30px rgba(255,255,255,.08);
+}
+
+.certificate h2{
+    font-size:32px;
+    color:#eee;
+    margin-bottom:25px;
+}
+
+.certificate p{
+    color:#aaa;
+    margin:10px 0;
+}
+
+.certificate h3{
+    font-size:25px;
+    margin:12px 0;
+    color:#fff;
+}
+
+.cert-seal{
+    width:65px;
+    height:65px;
+    border:2px solid #aaa;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:25px auto;
+    font-size:28px;
+}
+
+.cert-sign{
+    margin-top:25px;
+    padding-top:12px;
+    border-top:1px solid #555;
+    display:inline-block;
+    color:#ddd;
+}
+
+.hidden{
+    display:none;
+}
+
+footer{
+    margin-top:50px;
+    padding:25px;
+    text-align:center;
+    border-top:1px solid #333;
+    color:#777;
+}
+
+@media(max-width:800px){
+    .journey{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .modules{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+}
+
+@media(max-width:500px){
+    .container{
+        width:92%;
+    }
+
+    .journey{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Skill<span>Bridge</span></div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="internship.html">Internships</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="login.html">Login</a>
+    </div>
+</nav>
+
+<div class="container">
+
+<a href="internship-details.html?internship=uiux" class="back">
+    ← Back to Internship Details
+</a>
+
+<div class="hero">
+
+    <div class="hero-icon">🎨</div>
+
+    <h1>UI/UX Designer Internship</h1>
+
+    <div class="company">Creative Studio</div>
+
+    <p>
+        Learn UI/UX design through structured modules,
+        practical learning and assessments.
+    </p>
+
+    <div class="status" id="currentStatus">
+        Applied
+    </div>
+
+</div>
+
+
+<!-- JOURNEY -->
+
+<div class="section">
+
+<h2>Internship Journey</h2>
+
+<div class="journey">
+
+<div class="step">
+<div class="number">1</div>
+<h3>Applied</h3>
+<small>Application submitted</small>
+</div>
+
+<div class="step">
+<div class="number">2</div>
+<h3>Under Review</h3>
+<small>Application being reviewed</small>
+</div>
+
+<div class="step">
+<div class="number">3</div>
+<h3>Shortlisted</h3>
+<small>Student shortlisted</small>
+</div>
+
+<div class="step">
+<div class="number">4</div>
+<h3>Selected</h3>
+<small>Internship selected</small>
+</div>
+
+<div class="step">
+<div class="number">5</div>
+<h3>Learning</h3>
+<small>Learning modules</small>
+</div>
+
+<div class="step">
+<div class="number">6</div>
+<h3>Assessment</h3>
+<small>Final assessment</small>
+</div>
+
+<div class="step">
+<div class="number">7</div>
+<h3>Completed</h3>
+<small>Internship completed</small>
+</div>
+
+<div class="step">
+<div class="number">8</div>
+<h3>Certificate</h3>
+<small>Certificate generated</small>
+</div>
+
+</div>
+
+
+<div class="demo-box">
+
+<p>
+<strong>Prototype Demo:</strong>
+Under Review, Shortlisted and Selected are simulated
+status changes for project demonstration.
+</p>
+
+<div class="demo-buttons">
+
+<button onclick="setStatus('Under Review')">
+Under Review
+</button>
+
+<button onclick="setStatus('Shortlisted')">
+Shortlisted
+</button>
+
+<button onclick="setStatus('Selected')">
+Selected
+</button>
+
+</div>
+
+</div>
+
+
+<div class="start-box" id="startBox">
+
+<h2>Start Your Internship</h2>
+
+<p>
+You have been marked as Selected in this prototype.
+You can now start your learning journey.
+</p>
+
+<button class="primary" onclick="startInternship()">
+Start Internship
+</button>
+
+</div>
+
+</div>
+
+
+<!-- MODULES -->
+
+<div class="section">
+
+<h2>Learning Modules</h2>
+
+<div class="modules">
+
+<div class="module" id="module0">
+
+<h3>Module 1 — UI Design Fundamentals</h3>
+
+<p>
+Learn UI design principles, visual hierarchy, layouts,
+colors and typography.
+</p>
+
+<button onclick="completeModule(0)">
+Complete Module
+</button>
+
+</div>
+
+
+<div class="module" id="module1">
+
+<h3>Module 2 — UX Design Basics</h3>
+
+<p>
+Learn user experience principles, user needs,
+usability and design thinking.
+</p>
+
+<button onclick="completeModule(1)">
+Complete Module
+</button>
+
+</div>
+
+
+<div class="module" id="module2">
+
+<h3>Module 3 — Wireframing</h3>
+
+<p>
+Learn how to create simple wireframes and plan
+the structure of digital interfaces.
+</p>
+
+<button onclick="completeModule(2)">
+Complete Module
+</button>
+
+</div>
+
+
+<div class="module" id="module3">
+
+<h3>Module 4 — Figma & Prototyping</h3>
+
+<p>
+Learn basic Figma tools, interface design and
+interactive prototypes.
+</p>
+
+<button onclick="completeModule(3)">
+Complete Module
+</button>
+
+</div>
+
+</div>
+
+
+<div class="progress-box">
+
+<h3>Internship Progress</h3>
+
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+
+<div class="progress-text" id="progressText">
+0% completed
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="section">
+
+<h2>Module Quiz</h2>
+
+<div class="quiz">
+
+
+<div class="question">
+
+<h3>
+1. Which principle helps users understand the importance of different elements in a UI?
+</h3>
+
+<label class="option">
+<input type="radio" name="q1" value="A">
+Visual Hierarchy
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="B">
+File Compression
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C">
+Data Encryption
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="D">
+Database Indexing
+</label>
+
+</div>
+
+
+<div class="question">
+
+<h3>
+2. What is an important goal of UX design?
+</h3>
+
+<label class="option">
+<input type="radio" name="q2" value="A">
+Improve the user's experience
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="B">
+Increase file size
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="C">
+Remove all navigation
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="D">
+Hide important information
+</label>
+
+</div>
+
+
+<div class="question">
+
+<h3>
+3. What is a wireframe mainly used for?
+</h3>
+
+<label class="option">
+<input type="radio" name="q3" value="A">
+Planning the structure of an interface
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="B">
+Writing database queries
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="C">
+Compressing images
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="D">
+Testing network speed
+</label>
+
+</div>
+
+
+<div class="question">
+
+<h3>
+4. Which tool is commonly used for UI/UX design and prototyping?
+</h3>
+
+<label class="option">
+<input type="radio" name="q4" value="A">
+Figma
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="B">
+Excel
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="C">
+MySQL
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="D">
+PowerShell
+</label>
+
+</div>
+
+
+<button class="primary" onclick="finishQuiz()">
+Submit Quiz
+</button>
+
+<div id="quizResult"></div>
+
+</div>
+
+</div>
+
+
+<!-- FINAL ASSESSMENT -->
+
+<div class="section">
+
+<h2>Final Assessment</h2>
+
+<div class="assessment">
+
+<h3>UI/UX Designer Final Assessment</h3>
+
+<p>
+Complete all learning modules and pass the module quiz
+before completing the final assessment.
+</p>
+
+<button class="primary" onclick="completeAssessment()">
+Complete Final Assessment
+</button>
+
+<div id="assessmentResult"></div>
+
+</div>
+
+</div>
+
+
+<!-- CERTIFICATE -->
+
+<div class="certificate-box hidden" id="certificate">
+
+<div class="certificate">
+
+<h2>Certificate of Completion</h2>
+
+<p>This certificate is proudly awarded to</p>
+
+<h3 id="studentName">Student</h3>
+
+<p>for successfully completing the</p>
+
+<h3>UI/UX Designer Internship</h3>
+
+<p>Creative Studio</p>
+
+<div class="cert-seal">✓</div>
+
+<p>Internship completed through SkillBridge</p>
+
+<div class="cert-sign">
+SkillBridge
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+© 2026 SkillBridge | Student Skill & Internship Portal
+</footer>
+
+
+<script>
+
+const STORAGE_KEY =
+"skillBridgeUIUXJourney";
+
+
+let state =
+JSON.parse(localStorage.getItem(STORAGE_KEY))
+||
+{
+    status:"Applied",
+    started:false,
+    completedModules:[],
+    quizPassed:false,
+    assessmentCompleted:false,
+    completed:false
+};
+
+
+function saveState(){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(state)
+    );
+
+}
+
+
+function setStatus(status){
+
+    state.status = status;
+
+    saveState();
+
+    updateUI();
+
+}
+
+
+function startInternship(){
+
+    state.started = true;
+
+    state.status = "Learning";
+
+    saveState();
+
+    updateUI();
+
+}
+
+
+function completeModule(index){
+
+    if(!state.started){
+
+        alert("Please click Start Internship first.");
+
+        return;
+
+    }
+
+
+    if(!state.completedModules.includes(index)){
+
+        state.completedModules.push(index);
+
+    }
+
+
+    saveState();
+
+    updateUI();
+
+}
+
+
+function finishQuiz(){
+
+    if(!state.started){
+
+        alert("Please start the internship first.");
+
+        return;
+
+    }
+
+
+    const answers = {
+
+        q1:"A",
+        q2:"A",
+        q3:"A",
+        q4:"A"
+
+    };
+
+
+    let score = 0;
+
+
+    for(let q in answers){
+
+        const selected =
+        document.querySelector(
+            'input[name="' + q + '"]:checked'
+        );
+
+
+        if(
+            selected &&
+            selected.value === answers[q]
+        ){
+
+            score++;
+
+        }
+
+    }
+
+
+    const result =
+    document.getElementById("quizResult");
+
+
+    if(score >= 3){
+
+        state.quizPassed = true;
+
+        result.innerHTML =
+        "Quiz Passed! Score: " +
+        score + "/4";
+
+    }
+    else{
+
+        state.quizPassed = false;
+
+        result.innerHTML =
+        "Quiz not passed. Score: " +
+        score +
+        "/4. You need at least 3 correct answers.";
+
+    }
+
+
+    saveState();
+
+    updateUI();
+
+}
+
+
+function completeAssessment(){
+
+    if(!state.started){
+
+        alert("Please start the internship first.");
+
+        return;
+
+    }
+
+
+    if(state.completedModules.length < 4){
+
+        alert(
+            "Please complete all 4 learning modules first."
+        );
+
+        return;
+
+    }
+
+
+    if(!state.quizPassed){
+
+        alert(
+            "Please pass the module quiz first."
+        );
+
+        return;
+
+    }
+
+
+    state.assessmentCompleted = true;
+
+    state.completed = true;
+
+    state.status = "Completed";
+
+
+    saveState();
+
+    updateUI();
+
+
+    document.getElementById(
+        "assessmentResult"
+    ).innerHTML =
+    "Final Assessment Completed Successfully!";
+
+
+    alert(
+        "Congratulations! Your internship is completed."
+    );
+
+}
+
+
+function updateProgress(){
+
+    let progress =
+    state.completedModules.length * 20;
+
+
+    if(state.quizPassed){
+
+        progress =
+        Math.max(progress,85);
+
+    }
+
+
+    if(state.completed){
+
+        progress = 100;
+
+    }
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+    progress + "%";
+
+
+    document.getElementById(
+        "progressText"
+    ).innerText =
+    progress + "% completed";
+
+
+    for(let i=0;i<4;i++){
+
+        const module =
+        document.getElementById(
+            "module" + i
+        );
+
+
+        const button =
+        module.querySelector("button");
+
+
+        if(
+            state.completedModules.includes(i)
+        ){
+
+            module.classList.add("completed");
+
+            button.innerText =
+            "✓ Module Completed";
+
+            button.disabled = true;
+
+        }
+
+    }
+
+}
+
+
+function updateUI(){
+
+    document.getElementById(
+        "currentStatus"
+    ).innerText =
+    state.status;
+
+
+    const startBox =
+    document.getElementById("startBox");
+
+
+    if(
+        state.status === "Selected" ||
+        state.started ||
+        state.completed
+    ){
+
+        startBox.style.display =
+        "block";
+
+    }
+    else{
+
+        startBox.style.display =
+        "none";
+
+    }
+
+
+    updateProgress();
+
+
+    if(state.completed){
+
+        document.getElementById(
+            "certificate"
+        ).classList.remove("hidden");
+
+        loadStudentName();
+
+    }
+
+}
+
+
+function loadStudentName(){
+
+    const profile =
+    JSON.parse(
+        localStorage.getItem(
+            "skillBridgeProfile"
+        )
+    );
+
+
+    if(profile && profile.name){
+
+        document.getElementById(
+            "studentName"
+        ).innerText =
+        profile.name;
+
+    }
+
+}
+
+
+loadStudentName();
+
+updateUI();
+
+</script>
+
+</body>
+</html>

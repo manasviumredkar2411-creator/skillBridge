@@ -1,0 +1,1340 @@
+<html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillBridge | Student Internship Portal</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ================= BODY ================= */
+
+body {
+
+    color: white;
+
+    min-height: 100vh;
+
+    background:
+
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(255,255,255,0.75) 0%,
+            rgba(210,215,220,0.55) 18%,
+            rgba(160,165,170,0.30) 32%,
+            transparent 48%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(235,238,241,0.50) 0%,
+            rgba(170,175,180,0.22) 25%,
+            transparent 40%
+        ),
+
+        linear-gradient(
+            120deg,
+            #030303 0%,
+            #080808 35%,
+            #151515 52%,
+            #383d42 65%,
+            #73787d 78%,
+            #cdd1d5 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* ================= NAVBAR ================= */
+
+nav {
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(8, 8, 8, 0.92);
+
+    box-shadow:
+        0 2px 15px rgba(0,0,0,0.30);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.18);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    backdrop-filter: blur(10px);
+}
+
+
+.logo {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    color: white;
+
+    letter-spacing: 1px;
+}
+
+
+.logo span {
+
+    color: #d9dde1;
+}
+
+
+nav ul {
+
+    display: flex;
+
+    list-style: none;
+
+    gap: 30px;
+}
+
+
+nav ul li a {
+
+    text-decoration: none;
+
+    color: #eeeeee;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+
+nav ul li a:hover {
+
+    color: #d9dde1;
+}
+
+
+.login-btn {
+
+    background: #d9dde1;
+
+    color: #101010;
+
+    padding: 11px 22px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.login-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(220,225,230,0.40);
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+
+    min-height: 570px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 70px 7%;
+
+    overflow: hidden;
+}
+
+
+.hero-text {
+
+    max-width: 570px;
+
+    animation:
+        slideLeft 1s ease;
+}
+
+
+.hero-text h1 {
+
+    font-size: 52px;
+
+    line-height: 1.15;
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+
+.hero-text h1 span {
+
+    color: #d9dde1;
+}
+
+
+.hero-text p {
+
+    color: #e0e0e0;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 15px;
+}
+
+
+.primary-btn,
+.secondary-btn {
+
+    padding: 14px 24px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.primary-btn {
+
+    background: #d9dde1;
+
+    color: #101010;
+}
+
+
+.secondary-btn {
+
+    border: 1px solid #d9dde1;
+
+    color: #d9dde1;
+
+    background: rgba(0,0,0,0.35);
+}
+
+
+.primary-btn:hover,
+.secondary-btn:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(220,225,230,0.28);
+}
+
+
+/* ================= HERO CARD ================= */
+
+.hero-card {
+
+    width: 380px;
+
+    background:
+        rgba(12,12,12,0.82);
+
+    padding: 28px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(220,220,225,0.45);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.45);
+
+    animation:
+        floating 3s ease-in-out infinite;
+}
+
+
+.hero-card h3 {
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+
+.match {
+
+    background:
+        rgba(255,255,255,0.07);
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    margin-bottom: 15px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+}
+
+
+.match-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+
+.percentage {
+
+    color: #d9dde1;
+
+    font-weight: bold;
+}
+
+
+.match p {
+
+    color: #cfcfcf;
+}
+
+
+.progress {
+
+    height: 8px;
+
+    background: #444;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+
+    height: 100%;
+
+    width: 85%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #858a8f,
+            #d9dde1,
+            #ffffff
+        );
+
+    animation:
+        progressAnimation 2s ease;
+}
+
+
+/* ================= SECTION ================= */
+
+.section {
+
+    padding: 70px 7%;
+}
+
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+
+.section-title h2 {
+
+    font-size: 34px;
+
+    margin-bottom: 10px;
+
+    color: white;
+}
+
+
+.section-title h2::after {
+
+    content: "";
+
+    display: block;
+
+    width: 55px;
+
+    height: 3px;
+
+    background: #d9dde1;
+
+    margin: 12px auto;
+
+    border-radius: 5px;
+}
+
+
+.section-title p {
+
+    color: #dddddd;
+}
+
+
+/* ================= INTERNSHIP CARDS ================= */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.card {
+
+    background:
+        rgba(10,10,10,0.82);
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.35);
+
+    transition: 0.3s;
+}
+
+
+.card:hover {
+
+    transform: translateY(-10px);
+
+    border-color: #d9dde1;
+
+    box-shadow:
+        0 18px 35px
+        rgba(0,0,0,0.5);
+}
+
+
+/* ================= SILVER ICON ================= */
+
+.card-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f1f2f3,
+            #c2c6ca,
+            #92979c
+        );
+
+    color: #222;
+
+    border:
+        1px solid #969ba0;
+
+    border-radius: 12px;
+
+    font-size: 24px;
+
+    margin-bottom: 18px;
+
+    box-shadow:
+        inset 0 1px 3px white;
+}
+
+
+.card h3 {
+
+    color: white;
+
+    margin-bottom: 10px;
+}
+
+
+.company {
+
+    color: #bcbcbc;
+
+    margin-bottom: 15px;
+}
+
+
+.tags {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+
+.tag {
+
+    background: #d2d4d7;
+
+    color: #202020;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+}
+
+
+.apply {
+
+    display: inline-block;
+
+    width: 100%;
+
+    text-align: center;
+
+    background: #d9dde1;
+
+    color: #111;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.apply:hover {
+
+    background: #f2f4f6;
+
+    transform: scale(1.03);
+}
+
+
+/* ================= FEATURES ================= */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.feature {
+
+    text-align: center;
+
+    padding: 30px;
+
+    background:
+        rgba(10,10,10,0.65);
+
+    border-radius: 15px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    transition: 0.3s;
+}
+
+
+.feature:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #d9dde1;
+}
+
+
+.feature-icon {
+
+    font-size: 40px;
+
+    margin-bottom: 15px;
+
+    filter: grayscale(1);
+
+    opacity: 0.85;
+}
+
+
+.feature h3 {
+
+    color: #d9dde1;
+}
+
+
+.feature p {
+
+    color: #d0d0d0;
+
+    margin-top: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    background: #050505;
+
+    color: #d0d0d0;
+
+    text-align: center;
+
+    padding: 30px;
+
+    margin-top: 30px;
+
+    border-top:
+        1px solid rgba(220,220,225,0.25);
+}
+
+
+footer span {
+
+    color: #d9dde1;
+}
+
+
+/* ================= CLICK ANIMATION ================= */
+
+.click-effect {
+
+    position: fixed;
+
+    width: 15px;
+
+    height: 15px;
+
+    border:
+        2px solid #d9dde1;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        clickRipple 0.7s ease-out;
+
+    z-index: 9999;
+}
+
+
+@keyframes clickRipple {
+
+    0% {
+
+        width: 10px;
+
+        height: 10px;
+
+        opacity: 1;
+    }
+
+
+    100% {
+
+        width: 70px;
+
+        height: 70px;
+
+        opacity: 0;
+    }
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes slideLeft {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-60px);
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes floating {
+
+    0%, 100% {
+
+        transform:
+            translateY(0);
+    }
+
+
+    50% {
+
+        transform:
+            translateY(-12px);
+    }
+}
+
+
+@keyframes progressAnimation {
+
+    from {
+
+        width: 0;
+    }
+
+
+    to {
+
+        width: 85%;
+    }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width: 850px) {
+
+    nav ul {
+
+        display: none;
+    }
+
+
+    .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 50px;
+    }
+
+
+    .hero-buttons {
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+
+    .hero-card {
+
+        width: 90%;
+    }
+
+
+    .cards,
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .hero-text h1 {
+
+        font-size: 40px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+
+        Skill<span>Bridge</span>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            <a href="#">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#internships">
+                Internships
+            </a>
+        </li>
+
+        <li>
+            <a href="#features">
+                Features
+            </a>
+        </li>
+
+        <li>
+            <a href="#about">
+                About
+            </a>
+        </li>
+
+    </ul>
+
+
+    <a href="login.html" class="login-btn">
+        Login
+    </a>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+
+    <div class="hero-text">
+
+        <h1>
+
+            Build Your Skills.<br>
+
+            <span>
+                Find Your Opportunity.
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            SkillBridge helps students discover
+            internships based on their skills,
+            interests and career goals.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#internships"
+                class="primary-btn">
+
+                Explore Internships
+
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="secondary-btn">
+
+                Create Profile
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RECOMMENDATION CARD -->
+
+    <div class="hero-card">
+
+        <h3>
+            ✨ Recommended For You
+        </h3>
+
+
+        <div class="match">
+
+            <div class="match-top">
+
+                <strong>
+                    Frontend Developer
+                </strong>
+
+                <span class="percentage">
+                    85%
+                </span>
+
+            </div>
+
+
+            <p>
+                ABC Technologies
+            </p>
+
+
+            <br>
+
+
+            <div class="progress">
+
+                <div class="progress-bar">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="match">
+
+            <div class="match-top">
+
+                <strong>
+                    Web Developer
+                </strong>
+
+                <span class="percentage">
+                    72%
+                </span>
+
+            </div>
+
+
+            <p>
+                Tech Solutions
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= INTERNSHIPS ================= -->
+
+<section
+    class="section"
+    id="internships">
+
+
+    <div class="section-title">
+
+        <h2>
+            Popular Internships
+        </h2>
+
+
+        <p>
+            Explore opportunities matching
+            your career interests.
+        </p>
+
+    </div>
+
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                💻
+            </div>
+
+
+            <h3>
+                Frontend Developer
+            </h3>
+
+
+            <p class="company">
+                ABC Technologies
+            </p>
+
+
+            <div class="tags">
+
+                <span class="tag">
+                    HTML
+                </span>
+
+                <span class="tag">
+                    CSS
+                </span>
+
+                <span class="tag">
+                    JavaScript
+                </span>
+
+            </div>
+
+
+            <a
+                href="internship-details.html?
+                internship=frontend"
+                class="apply">
+
+                View Internship
+
+            </a>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                📊
+            </div>
+
+
+            <h3>
+                Data Analyst
+            </h3>
+
+
+            <p class="company">
+                DataWorks
+            </p>
+
+
+            <div class="tags">
+
+                <span class="tag">
+                    Excel
+                </span>
+
+                <span class="tag">
+                    SQL
+                </span>
+
+                <span class="tag">
+                    Python
+                </span>
+
+            </div>
+
+
+            <a
+                href="internship-details.html?
+               internship=data"
+                class="apply">
+
+                View Internship
+
+            </a>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🎨
+            </div>
+
+
+            <h3>
+                UI/UX Designer
+            </h3>
+
+
+            <p class="company">
+                Creative Studio
+            </p>
+
+
+            <div class="tags">
+
+                <span class="tag">
+                    Figma
+                </span>
+
+                <span class="tag">
+                    UI Design
+                </span>
+
+                <span class="tag">
+                    UX
+                </span>
+
+            </div>
+
+
+            <a
+                href="internship-details.html?
+                internship=uiux"
+                class="apply">
+
+                View Internship
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FEATURES ================= -->
+
+<section
+    class="section"
+    id="features">
+
+
+    <div class="section-title">
+
+        <h2>
+            Why SkillBridge?
+        </h2>
+
+
+        <p>
+            Everything students need to manage
+            their internship journey.
+        </p>
+
+    </div>
+
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎯
+            </div>
+
+
+            <h3>
+                Skill Matching
+            </h3>
+
+
+            <p>
+                Find internships according to
+                your skills and interests.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📋
+            </div>
+
+
+            <h3>
+                Application Tracking
+            </h3>
+
+
+            <p>
+                Track your internship applications
+                and their current status.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🚀
+            </div>
+
+
+            <h3>
+                Career Growth
+            </h3>
+
+
+            <p>
+                Discover opportunities that help
+                you develop your career.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="about">
+
+    <p>
+
+        © 2026
+
+        <span>
+            SkillBridge
+        </span>
+
+        | Student Skill & Internship Portal
+
+    </p>
+
+</footer>
+
+
+
+<!-- ================= CLICK ANIMATION ================= -->
+
+<script>
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const effect =
+            document.createElement("div");
+
+        effect.classList.add(
+            "click-effect"
+        );
+
+        effect.style.left =
+            event.clientX + "px";
+
+        effect.style.top =
+            event.clientY + "px";
+
+        document.body.appendChild(
+            effect
+        );
+
+
+        setTimeout(
+            function() {
+
+                effect.remove();
+
+            },
+            700
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
