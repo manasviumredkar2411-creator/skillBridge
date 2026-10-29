@@ -184,27 +184,37 @@ try {
 
 });
 
-async function startServer() {
+aasync function startServer() {
     try {
         const connection = await mysql.createConnection(dbConfig);
 
-await connection.execute(`
-    CREATE TABLE IF NOT EXISTS applications (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        student_id INT NOT NULL,
-        internship_title VARCHAR(255) NOT NULL,
-        applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-`);
+        await connection.execute(`
+            CREATE TABLE IF NOT EXISTS students (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                email VARCHAR(255) NOT NULL UNIQUE,
+                phone VARCHAR(50),
+                skills TEXT
+            )
+        `);
 
-console.log("MySQL database connected successfully!");
-await connection.end();;
+        await connection.execute(`
+            CREATE TABLE IF NOT EXISTS applications (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                student_id INT NOT NULL,
+                internship_title VARCHAR(255) NOT NULL,
+                applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
+        console.log("MySQL database connected successfully!");
+        await connection.end();
 
         const PORT = process.env.PORT || 3000;
+        app.listen(PORT, () => {
+            console.log(`SkillBridge backend running on port ${PORT}`);
+        });
 
-app.listen(PORT, () => {
-    console.log(`SkillBridge backend running on port ${PORT}`);
-});
     } catch (error) {
         console.error("Database connection failed:", error.message);
     }
