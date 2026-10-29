@@ -1263,7 +1263,8 @@ async function transferSavedApplications() {
     for (const app of applications) {
         try {
             const response = await fetch(
-                "http://localhost:3000/api/applications",
+                "https://skillbridge-backend-1s0r.onrender.com/api/applications"
+    ,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
