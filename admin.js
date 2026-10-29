@@ -1,5 +1,5 @@
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://skillbridge-backend-1s0r.onrender.com";
 
 async function loadDashboard() {
 const message = document.getElementById("message");
