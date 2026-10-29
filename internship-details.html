@@ -1031,134 +1031,108 @@ internship.modules.forEach(function(module){
    APPLY INTERNSHIP
    ========================================== */
 
-function applyInternship(){
+async function applyInternship() {
+const profileData = localStorage.getItem("skillBridgeProfile");
 
-    const profile =
-        localStorage.getItem(
-            "skillBridgeProfile"
-        );
+if (!profileData) {
+    alert("Please create your SkillBridge profile before applying.");
+    window.location.href = "profile.html";
+    return;
+}
 
+let profile;
 
-    if(!profile){
+try {
+    profile = JSON.parse(profileData);
+} catch (error) {
+    alert("Your profile could not be read. Please create your profile again.");
+    return;
+}
 
-        alert(
-            "Please create your SkillBridge profile before applying."
-        );
+const applications = JSON.parse(
+    localStorage.getItem("skillBridgeApplications") || "[]"
+);
 
+const alreadyApplied = applications.some(function (app) {
+    return app.title === internship.title &&
+           app.company === internship.company;
+});
 
-        window.location.href =
-            "profile.html";
+const button = document.getElementById("applyButton");
 
+if (alreadyApplied) {
+    button.innerText = "✓ Applied";
+    button.classList.add("applied");
+    alert("You have already applied for this internship.");
+    return;
+}
 
+if (!profile.name || !profile.email) {
+    alert("Please make sure your profile has your name and email.");
+    window.location.href = "profile.html";
+    return;
+}
+
+button.disabled = true;
+
+try {
+    const response = await fetch("http://localhost:3000/api/applications", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: profile.name,
+            email: profile.email,
+            phone: profile.phone || "",
+            skills: Array.isArray(profile.skills)
+                ? profile.skills.join(", ")
+                : (profile.skills || ""),
+            internship_title: internship.title
+        })
+    });
+
+    const result = await response.json();
+
+    if (response.status === 409) {
+        alert("You have already applied for this internship.");
         return;
-
     }
 
-
-    let applications =
-        JSON.parse(
-            localStorage.getItem(
-                "skillBridgeApplications"
-            )
-        ) || [];
-
-
-    const alreadyApplied =
-        applications.some(function(app){
-
-            return (
-                app.title === internship.title &&
-                app.company === internship.company
-            );
-
-        });
-
-
-    if(alreadyApplied){
-
-        const button =
-            document.getElementById(
-                "applyButton"
-            );
-
-
-        button.innerText =
-            "✓ Applied";
-
-
-        button.classList.add(
-            "applied"
-        );
-
-
-        alert(
-            "You have already applied for this internship."
-        );
-
-
-        return;
-
+    if (!response.ok) {
+        throw new Error(result.error || "Application could not be saved.");
     }
 
-
-    const application = {
-
+    applications.push({
         id: Date.now(),
-
-        title:
-            internship.title,
-
-        company:
-            internship.company,
-
-        status:
-            "Applied",
-
-        progress:
-            0,
-
-        appliedAt:
-            new Date().toLocaleDateString()
-
-    };
-
-
-    applications.push(
-        application
-    );
-
+        title: internship.title,
+        company: internship.company,
+        status: "Applied",
+        progress: 0,
+        appliedAt: new Date().toLocaleDateString()
+    });
 
     localStorage.setItem(
-
         "skillBridgeApplications",
-
-        JSON.stringify(
-            applications
-        )
-
+        JSON.stringify(applications)
     );
 
+    button.innerText = "✓ Applied";
+    button.classList.add("applied");
 
-    const button =
-        document.getElementById(
-            "applyButton"
-        );
+    alert("Application submitted successfully!");
 
-
-    button.innerText =
-        "✓ Applied";
-
-
-    button.classList.add(
-        "applied"
-    );
-
-
+} catch (error) {
+    console.error("Application error:", error);
     alert(
-        "Application Submitted Successfully!"
+        "Application save nahi ho paya. Check karo ki SkillBridge backend running hai."
     );
+} finally {
+    button.disabled = false;
+}
 
 }
+
 
 
 /* ==========================================
@@ -1268,6 +1242,64 @@ function startInternshipJourney(){
     }
 
 }
+async function transferSavedApplications() {
+    const profile = JSON.parse(
+        localStorage.getItem("skillBridgeProfile") || "null"
+    );
+
+    const applications = JSON.parse(
+        localStorage.getItem("skillBridgeApplications") || "[]"
+    );
+
+    if (!profile?.name || !profile?.email || !applications.length) {
+        alert("Profile ya saved applications nahi mili.");
+        return;
+    }
+
+    let saved = 0;
+    let skipped = 0;
+    let failed = 0;
+
+    for (const app of applications) {
+        try {
+            const response = await fetch(
+                "http://localhost:3000/api/applications",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name: profile.name,
+                        email: profile.email,
+                        phone: profile.phone || "",
+                        skills: Array.isArray(profile.skills)
+                            ? profile.skills.join(", ")
+                            : (profile.skills || ""),
+                        internship_title: app.title
+                    })
+                }
+            );
+
+            if (response.status === 201) {
+                saved++;
+            } else if (response.status === 409) {
+                skipped++;
+            } else {
+                failed++;
+            }
+        } catch (error) {
+            failed++;
+        }
+    }
+
+    alert(
+        "Transfer complete!\n" +
+        "Newly saved: " + saved + "\n" +
+        "Already saved: " + skipped + "\n" +
+        "Failed: " + failed
+    );
+}
+
+transferSavedApplications();
 </script>
 
 </body>

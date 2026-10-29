@@ -528,6 +528,15 @@ nav ul li a:hover {
 
     margin-bottom: 15px;
 }
+.applicant-count {
+    color: #d9dde1;
+    font-size: 13px;
+    margin-bottom: 15px;
+    padding: 8px 10px;
+    background: rgba(217, 221, 225, 0.08);
+    border: 1px solid rgba(217, 221, 225, 0.2);
+    border-radius: 7px;
+}
 
 
 .tags {
@@ -1051,6 +1060,9 @@ footer span {
             <p class="company">
                 ABC Technologies
             </p>
+            <p class="applicant-count" id="frontend-count">
+                Applicants: Loading...
+            </p>
 
 
             <div class="tags">
@@ -1098,6 +1110,9 @@ footer span {
             <p class="company">
                 DataWorks
             </p>
+            <p class="applicant-count" id="data-count">
+                Applicants: Loading...
+            </p>
 
 
             <div class="tags">
@@ -1144,6 +1159,9 @@ footer span {
 
             <p class="company">
                 Creative Studio
+            </p>
+            <p class="applicant-count" id="uiux-count">
+                Applicants: Loading...
             </p>
 
 
@@ -1331,7 +1349,42 @@ document.addEventListener(
 
     }
 );
+async function loadApplicantCounts() {
+    try {
+        const response = await fetch(
+            "http://localhost:3000/api/admin/stats"
+        );
 
+        if (!response.ok) {
+            throw new Error("Unable to load counts");
+        }
+
+        const data = await response.json();
+
+        document.getElementById("frontend-count").textContent =
+            `👥 ${data.frontendApplications} student applied`;
+
+        document.getElementById("data-count").textContent =
+            `👥 ${data.dataAnalyticsApplications} student applied`;
+
+        document.getElementById("uiux-count").textContent =
+            `👥 ${data.uiuxApplications} student applied`;
+
+    } catch (error) {
+        console.error("Applicant count error:", error);
+
+        document.getElementById("frontend-count").textContent =
+            "Applicants: Count unavailable";
+
+        document.getElementById("data-count").textContent =
+            "Applicants: Count unavailable";
+
+        document.getElementById("uiux-count").textContent =
+            "Applicants: Count unavailable";
+    }
+}
+
+loadApplicantCounts();
 </script>
 
 
