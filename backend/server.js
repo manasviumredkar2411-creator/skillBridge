@@ -187,8 +187,18 @@ try {
 async function startServer() {
     try {
         const connection = await mysql.createConnection(dbConfig);
-        console.log("MySQL database connected successfully!");
-        await connection.end();
+
+await connection.execute(`
+    CREATE TABLE IF NOT EXISTS applications (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        student_id INT NOT NULL,
+        internship_title VARCHAR(255) NOT NULL,
+        applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+`);
+
+console.log("MySQL database connected successfully!");
+await connection.end();;
 
         const PORT = process.env.PORT || 3000;
 
