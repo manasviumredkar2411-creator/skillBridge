@@ -184,7 +184,7 @@ try {
 
 });
 
-aasync function startServer() {
+async function startServer() {
     try {
         const connection = await mysql.createConnection(dbConfig);
 
